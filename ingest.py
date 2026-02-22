@@ -103,6 +103,9 @@ def ingest(keywords: list[str] | None = None) -> dict:
     # Purge unlabelled positives that no longer match the current keyword list
     purged = db.purge_stale_unlabelled(positive_ids)
 
+    # Replace the unlabelled negative pool (don't accumulate across runs)
+    purged_neg = db.purge_unlabelled_negatives()
+
     negatives = pull_negative_candidates(driver, positive_ids)
     driver.close()
 

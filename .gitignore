@@ -3,4 +3,6 @@ labelling.db
 __pycache__/
 *.pyc
 .vscode/
+model.joblib
+models/
 nul
